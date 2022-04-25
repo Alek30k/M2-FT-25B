@@ -1,13 +1,18 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
-
+var toDoItems = [];
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
 
-
+// defino una variable con mi nombre
+var nombre = " Alejandro";
+// obtengo el span
+var spn = document.querySelector('#createdBy')
+    // agrego mi nombre al innerHTML
+spn.innerHTML += nombre;
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -16,17 +21,20 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
-  // Tu código acá:
-
+function ToDo(description) {
+    // Tu código acá:
+    this.description = description;
+    this.complete = false;
 }
-
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
 // No requiere ningún argumento
 // Debe setear el atributo 'complete' del ToDo en true
 
 // Tu código acá:
+ToDo.prototype.completeToDo = function() {
+    this.complete = true;
+}
 
 
 
@@ -49,7 +57,7 @@ function ToDo () {
 
 
 function buildToDo(todo, index) {
-  // Tu código acá:
+    // Tu código acá:
 
 }
 
@@ -59,7 +67,7 @@ function buildToDo(todo, index) {
 // Devolver el nuevo array
 
 function buildToDos(toDos) {
-  // Tu código acá:
+    // Tu código acá:
 
 }
 
@@ -74,7 +82,7 @@ function buildToDos(toDos) {
 //  6) Abrir o en el caso de ya tenerlo abierto, recargar, la página
 
 function displayToDos() {
-  // Tu código acá:
+    // Tu código acá:
 
 }
 
@@ -89,7 +97,7 @@ function displayToDos() {
 //  4) Llamar a la función displayToDos para que se actualicen los toDos mostrados en pantalla
 
 function addToDo() {
-  // Tu código acá:
+    // Tu código acá:
 
 }
 
@@ -114,9 +122,9 @@ function addToDo() {
 //      esta función como callback
 
 function completeToDo(event) {
-  // DESCOMENTAR LA SIGUIENTE LINEA
-  // const index = event.target.id;
-  // Tu código acá:
+    // DESCOMENTAR LA SIGUIENTE LINEA
+    // const index = event.target.id;
+    // Tu código acá:
 
 }
 
@@ -141,13 +149,13 @@ function completeToDo(event) {
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== 'undefined') {
-  module.exports = {
-    toDoItems: toDoItems,
-    ToDo: ToDo,
-    buildToDos: buildToDos,
-    buildToDo: buildToDo,
-    completeToDo: completeToDo,
-    displayToDos: displayToDos,
-    addToDo: addToDo
-  };
+    module.exports = {
+        toDoItems: toDoItems,
+        ToDo: ToDo,
+        buildToDos: buildToDos,
+        buildToDo: buildToDo,
+        completeToDo: completeToDo,
+        displayToDos: displayToDos,
+        addToDo: addToDo
+    };
 }
