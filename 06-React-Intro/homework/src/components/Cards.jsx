@@ -1,15 +1,16 @@
 import React from 'react';
 import Card from './Card.jsx';
 
-export default function Cards(props) {
+export default function Cards({cities}) {
   // acá va tu código
   // tip, podés usar un map
-  // if(!props.cities) { 
-  //   return <h1>No hay ciudades disponibles</h1>;
-  // }
+  if(!props.cities) { 
+    return <h1>No hay ciudades disponibles</h1>;
+  }
   return (
   <div>
-    {props.cities.map(c =>
+    {
+    cities && cities.map(c =>
       <Card
           max={c.main.temp_max}
           min={c.main.temp_min}
