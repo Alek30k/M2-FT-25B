@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import './Favorites.css';
+import { quitarFav } from "../../actions";
 
 export class ConnectedList extends Component {
 
@@ -10,13 +11,26 @@ export class ConnectedList extends Component {
       <div>
         <h2>Películas Favoritas</h2>
         <ul>
-          {/* Aqui deberias poner tu lista de peliculas! */}
+          {this.props.favoritos && this.props.favoritos?.map( pelicula => {
+            return (
+              <li key={pelicula.imdbID}>
+                <Link to={`/movie/${pelicula.imdbID}`}>{pelicula.Title}</Link>
+                <button onClick={() => this.props.quitarFav(pelicula.imdbID)}>X</button>
+              </li>
+            )
+          })}
         </ul>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state)=> {
+  return {
+    favoritos: state.favoritos
+  }
+}
 
 
-export default (ConnectedList);
+
+export default connect(mapStateToProps, { quitarFav })(ConnectedList);
